@@ -19,73 +19,58 @@ final class ViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
-    private var redComponentOfColorView: CGFloat = 0
-    private var greenComponentOfColorView: CGFloat = 0
-    private var blueComponentOfColorView: CGFloat = 0
-    private var alphaComponentOfColorView: CGFloat = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        colorView.layer.cornerRadius = 20
+        colorView.layer.cornerRadius = 10
         colorizeButton.layer.cornerRadius = 10
-        colorView.backgroundColor = UIColor.random
         
-        matchSlidersWithColorView()
+        colorizeButtonTapped()
     }
     
     // MARK: - IBActions
     @IBAction func colorizeButtonTapped() {
-        colorView.backgroundColor = UIColor.random
-        matchSlidersWithColorView()
+        randomizeSliders()
+        changeColorView()
+        updateLabels()
     }
     
     @IBAction func redSliderAction() {
         changeColorView()
-        redValueLabel.text = String(format: "%.2f", redSlider.value)
+        updateLabels()
     }
     
     @IBAction func greenSliderAction() {
         changeColorView()
-        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+        updateLabels()
     }
     
     @IBAction func blueSliderAction() {
         changeColorView()
-        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+        updateLabels()
     }
     
     // MARK: - Private methods
-    private func matchSlidersWithColorView() {
-        colorView.backgroundColor!.getRed(&redComponentOfColorView,
-                                          green: &greenComponentOfColorView,
-                                          blue: &blueComponentOfColorView,
-                                          alpha: &alphaComponentOfColorView)
-        
-        redSlider.value = Float(redComponentOfColorView)
-        redValueLabel.text = String(format: "%.2f", redSlider.value)
-        
-        greenSlider.value = Float(greenComponentOfColorView)
-        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
-        
-        blueSlider.value = Float(blueComponentOfColorView)
-        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+    private func randomizeSliders() {
+        redSlider.value = .random(in: 0...1)
+        greenSlider.value = .random(in: 0...1)
+        blueSlider.value = .random(in: 0...1)
     }
     
     private func changeColorView() {
-        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
-                                            green: CGFloat(greenSlider.value),
-                                            blue: CGFloat(blueSlider.value),
-                                            alpha: alphaComponentOfColorView)
+        colorView.backgroundColor = getColorFromSliders()
     }
-}
-
-// MARK: - Extensions
-extension UIColor {
-    class var random: UIColor {
-        return UIColor(red: .random(in: 0...1),
-                       green: .random(in: 0...1),
-                       blue: .random(in: 0...1),
-                       alpha: 1.0)
+    
+    private func getColorFromSliders() -> UIColor{
+        UIColor(red: CGFloat(redSlider.value),
+                       green: CGFloat(greenSlider.value),
+                       blue: CGFloat(blueSlider.value),
+                       alpha: 1)
+    }
+    
+    private func updateLabels() {
+        redValueLabel.text = String(format: "%.2f", redSlider.value)
+        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
     }
 }

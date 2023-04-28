@@ -134,7 +134,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bsp-ES-nvf" secondAttribute="trailing" constant="16" id="Sxl-Dk-RM0"/>
                             <constraint firstItem="Bsp-ES-nvf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Wgu-Yt-OcU"/>
                             <constraint firstItem="Bsp-ES-nvf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="bth-Uc-yED"/>
-                            <constraint firstItem="Bsp-ES-nvf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n4q-eG-gkI"/>
                         </constraints>
                     </view>
                     <connections>
