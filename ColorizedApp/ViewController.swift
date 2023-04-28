@@ -8,7 +8,7 @@
 import UIKit
 
 final class ViewController: UIViewController {
-
+    
     @IBOutlet var colorView: UIView!
     @IBOutlet var colorizeButton: UIButton!
     @IBOutlet var redValue: UILabel!
@@ -23,22 +23,39 @@ final class ViewController: UIViewController {
         
         colorView.layer.cornerRadius = 20
         colorizeButton.layer.cornerRadius = 10
-
         colorView.backgroundColor = UIColor.random
     }
     
     @IBAction func colorizeButtonTapped() {
+        colorView.backgroundColor = UIColor.random
     }
     
     @IBAction func redSliderAction() {
+        redValue.text = String(round(redSlider.value * 100) / 100)
     }
     
     @IBAction func greenSliderAction() {
+        greenValue.text = String(round(greenSlider.value * 100) / 100)
     }
     
     @IBAction func blueSliderAction() {
+        blueValue.text = String(round(blueSlider.value * 100) / 100)
     }
     
+    private func setupSliders() {
+        redSlider.minimumValue = 0
+        redSlider.maximumValue = 1
+        redSlider.value = 0.5
+
+        greenSlider.minimumValue = 0
+        greenSlider.maximumValue = 1
+        greenSlider.value = 0.5
+        
+        blueSlider.minimumValue = 0
+        blueSlider.maximumValue = 1
+        blueSlider.value = 0.5
+        
+    }
 }
 
 extension UIColor {
