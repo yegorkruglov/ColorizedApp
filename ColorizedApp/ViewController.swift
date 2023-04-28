@@ -31,13 +31,13 @@ final class ViewController: UIViewController {
         colorizeButton.layer.cornerRadius = 10
         colorView.backgroundColor = UIColor.random
         
-        updateSlidersToColorView()
+        matchSlidersWithColorView()
     }
     
     // MARK: - IBActions
     @IBAction func colorizeButtonTapped() {
         colorView.backgroundColor = UIColor.random
-        updateSlidersToColorView()
+        matchSlidersWithColorView()
     }
     
     @IBAction func redSliderAction() {
@@ -56,7 +56,7 @@ final class ViewController: UIViewController {
     }
     
     // MARK: - Private methods
-    private func updateSlidersToColorView() {
+    private func matchSlidersWithColorView() {
         colorView.backgroundColor!.getRed(&redComponentOfColorView,
                                           green: &greenComponentOfColorView,
                                           blue: &blueComponentOfColorView,
