@@ -9,6 +9,8 @@ import UIKit
 
 final class ViewController: UIViewController {
     
+    
+    // MARK: - IBOutlets
     @IBOutlet var colorView: UIView!
     @IBOutlet var colorizeButton: UIButton!
     @IBOutlet var redValueLabel: UILabel!
@@ -18,10 +20,11 @@ final class ViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
-    var red: CGFloat = 0
-    var green: CGFloat = 0
-    var blue: CGFloat = 0
-
+    private var red: CGFloat = 0
+    private var green: CGFloat = 0
+    private var blue: CGFloat = 0
+    private var alpha: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,57 +32,61 @@ final class ViewController: UIViewController {
         colorizeButton.layer.cornerRadius = 10
         colorView.backgroundColor = UIColor.random
         
-        setupSliders()
+        updateSlidersToColorView()
     }
     
+    // MARK: - IBActions
     @IBAction func colorizeButtonTapped() {
         colorView.backgroundColor = UIColor.random
-        setupSliders()
+        updateSlidersToColorView()
     }
     
     @IBAction func redSliderAction() {
-        redValueLabel.text = String(round(redSlider.value * 100) / 100)
-        
+        changeColorView()
+        redValueLabel.text = String(format: "%.2f", redSlider.value)
     }
     
     @IBAction func greenSliderAction() {
-        greenValueLabel.text = String(round(greenSlider.value * 100) / 100)
+        changeColorView()
+        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
     }
     
     @IBAction func blueSliderAction() {
-        blueValueLabel.text = String(round(blueSlider.value * 100) / 100)
+        changeColorView()
+        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
     }
     
-    private func setupSliders() {
+    // MARK: - Private methods
+    private func updateSlidersToColorView() {
         colorView.backgroundColor!.getRed(&red,
-                                         green: &green,
-                                         blue: &blue,
-                                         alpha: nil)
+                                          green: &green,
+                                          blue: &blue,
+                                          alpha: &alpha)
         
-        redSlider.minimumValue = 0
-        redSlider.maximumValue = 1
         redSlider.value = Float(red)
-        redValueLabel.text = String(round(redSlider.value * 100) / 100)
-
-        greenSlider.minimumValue = 0
-        greenSlider.maximumValue = 1
+        redValueLabel.text = String(format: "%.2f", redSlider.value)
+        
         greenSlider.value = Float(green)
-        greenValueLabel.text = String(round(greenSlider.value * 100) / 100)
-
-        blueSlider.minimumValue = 0
-        blueSlider.maximumValue = 1
+        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+        
         blueSlider.value = Float(blue)
-        blueValueLabel.text = String(round(blueSlider.value * 100) / 100)
+        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+    }
+    
+    private func changeColorView() {
+        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
+                                            green: CGFloat(greenSlider.value),
+                                            blue: CGFloat(blueSlider.value),
+                                            alpha: alpha)
     }
 }
 
+// MARK: - Extensions
 extension UIColor {
-    
     class var random: UIColor {
-        return UIColor(red: .random(in: 0.3...1),
-                       green: .random(in: 0.3...1),
-                       blue: .random(in: 0.3...1),
+        return UIColor(red: .random(in: 0...1),
+                       green: .random(in: 0...1),
+                       blue: .random(in: 0...1),
                        alpha: 1.0)
     }
 }
-
