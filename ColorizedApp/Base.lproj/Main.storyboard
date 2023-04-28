@@ -138,13 +138,13 @@
                     </view>
                     <connections>
                         <outlet property="blueSlider" destination="K8l-tT-0Gw" id="AZr-Y8-f5Y"/>
-                        <outlet property="blueValue" destination="4zm-pJ-IfN" id="JVr-Bn-ssy"/>
+                        <outlet property="blueValueLabel" destination="4zm-pJ-IfN" id="JVr-Bn-ssy"/>
                         <outlet property="colorView" destination="w7e-4T-ZJF" id="NSM-tz-Vv9"/>
                         <outlet property="colorizeButton" destination="JP0-mV-dIw" id="deC-XL-mzu"/>
                         <outlet property="greenSlider" destination="3cz-yW-8rq" id="xmM-dj-Wrv"/>
-                        <outlet property="greenValue" destination="D9k-g9-OFe" id="pMj-wU-rOP"/>
+                        <outlet property="greenValueLabel" destination="D9k-g9-OFe" id="pMj-wU-rOP"/>
                         <outlet property="redSlider" destination="wSC-yd-aa6" id="i1d-ii-gbi"/>
-                        <outlet property="redValue" destination="GvV-me-UWh" id="1PU-R2-MYv"/>
+                        <outlet property="redValueLabel" destination="GvV-me-UWh" id="1PU-R2-MYv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

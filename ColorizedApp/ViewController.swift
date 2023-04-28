@@ -11,9 +11,9 @@ final class ViewController: UIViewController {
     
     @IBOutlet var colorView: UIView!
     @IBOutlet var colorizeButton: UIButton!
-    @IBOutlet var redValue: UILabel!
-    @IBOutlet var greenValue: UILabel!
-    @IBOutlet var blueValue: UILabel!
+    @IBOutlet var redValueLabel: UILabel!
+    @IBOutlet var greenValueLabel: UILabel!
+    @IBOutlet var blueValueLabel: UILabel!
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
@@ -24,6 +24,8 @@ final class ViewController: UIViewController {
         colorView.layer.cornerRadius = 20
         colorizeButton.layer.cornerRadius = 10
         colorView.backgroundColor = UIColor.random
+        
+        setupSliders()
     }
     
     @IBAction func colorizeButtonTapped() {
@@ -31,30 +33,32 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func redSliderAction() {
-        redValue.text = String(round(redSlider.value * 100) / 100)
+        redValueLabel.text = String(round(redSlider.value * 100) / 100)
     }
     
     @IBAction func greenSliderAction() {
-        greenValue.text = String(round(greenSlider.value * 100) / 100)
+        greenValueLabel.text = String(round(greenSlider.value * 100) / 100)
     }
     
     @IBAction func blueSliderAction() {
-        blueValue.text = String(round(blueSlider.value * 100) / 100)
+        blueValueLabel.text = String(round(blueSlider.value * 100) / 100)
     }
     
     private func setupSliders() {
         redSlider.minimumValue = 0
         redSlider.maximumValue = 1
         redSlider.value = 0.5
+        redValueLabel.text = String(redSlider.value)
 
         greenSlider.minimumValue = 0
         greenSlider.maximumValue = 1
         greenSlider.value = 0.5
-        
+        greenValueLabel.text = String(greenSlider.value)
+
         blueSlider.minimumValue = 0
         blueSlider.maximumValue = 1
         blueSlider.value = 0.5
-        
+        blueValueLabel.text = String(blueSlider.value)        
     }
 }
 
