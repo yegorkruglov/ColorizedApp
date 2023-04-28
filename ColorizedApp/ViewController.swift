@@ -9,7 +9,6 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    
     // MARK: - IBOutlets
     @IBOutlet var colorView: UIView!
     @IBOutlet var colorizeButton: UIButton!
@@ -20,10 +19,10 @@ final class ViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
-    private var red: CGFloat = 0
-    private var green: CGFloat = 0
-    private var blue: CGFloat = 0
-    private var alpha: CGFloat = 0
+    private var redComponentOfColorView: CGFloat = 0
+    private var greenComponentOfColorView: CGFloat = 0
+    private var blueComponentOfColorView: CGFloat = 0
+    private var alphaComponentOfColorView: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,18 +57,18 @@ final class ViewController: UIViewController {
     
     // MARK: - Private methods
     private func updateSlidersToColorView() {
-        colorView.backgroundColor!.getRed(&red,
-                                          green: &green,
-                                          blue: &blue,
-                                          alpha: &alpha)
+        colorView.backgroundColor!.getRed(&redComponentOfColorView,
+                                          green: &greenComponentOfColorView,
+                                          blue: &blueComponentOfColorView,
+                                          alpha: &alphaComponentOfColorView)
         
-        redSlider.value = Float(red)
+        redSlider.value = Float(redComponentOfColorView)
         redValueLabel.text = String(format: "%.2f", redSlider.value)
         
-        greenSlider.value = Float(green)
+        greenSlider.value = Float(greenComponentOfColorView)
         greenValueLabel.text = String(format: "%.2f", greenSlider.value)
         
-        blueSlider.value = Float(blue)
+        blueSlider.value = Float(blueComponentOfColorView)
         blueValueLabel.text = String(format: "%.2f", blueSlider.value)
     }
     
@@ -77,7 +76,7 @@ final class ViewController: UIViewController {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
                                             green: CGFloat(greenSlider.value),
                                             blue: CGFloat(blueSlider.value),
-                                            alpha: alpha)
+                                            alpha: alphaComponentOfColorView)
     }
 }
 

@@ -100,14 +100,14 @@
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3cz-yW-8rq">
                                                         <rect key="frame" x="-2" y="82.666666666666629" width="244.66666666666666" height="75.333333333333314"/>
-                                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                                        <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
                                                         <connections>
                                                             <action selector="greenSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="XD1-on-WoV"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="K8l-tT-0Gw">
                                                         <rect key="frame" x="-2" y="165" width="244.66666666666666" height="75.666666666666686"/>
-                                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                                        <color key="minimumTrackTintColor" systemColor="systemBlueColor"/>
                                                         <connections>
                                                             <action selector="blueSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="gNn-hF-BAZ"/>
                                                         </connections>
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="-860" y="-54"/>
         </scene>
     </scenes>
     <resources>
