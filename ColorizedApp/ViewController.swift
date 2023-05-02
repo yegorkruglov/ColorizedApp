@@ -11,10 +11,13 @@ final class ViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet var colorView: UIView!
+    
     @IBOutlet var colorizeButton: UIButton!
+    
     @IBOutlet var redValueLabel: UILabel!
     @IBOutlet var greenValueLabel: UILabel!
     @IBOutlet var blueValueLabel: UILabel!
+    
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
@@ -25,7 +28,9 @@ final class ViewController: UIViewController {
         colorView.layer.cornerRadius = 10
         colorizeButton.layer.cornerRadius = 10
         
-        colorizeButtonTapped()
+        randomizeSliders()
+        changeColorView()
+        updateLabels()
     }
     
     // MARK: - IBActions
@@ -58,14 +63,10 @@ final class ViewController: UIViewController {
     }
     
     private func changeColorView() {
-        colorView.backgroundColor = getColorFromSliders()
-    }
-    
-    private func getColorFromSliders() -> UIColor{
-        UIColor(red: CGFloat(redSlider.value),
-                       green: CGFloat(greenSlider.value),
-                       blue: CGFloat(blueSlider.value),
-                       alpha: 1)
+        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
+                                            green: CGFloat(greenSlider.value),
+                                            blue: CGFloat(blueSlider.value),
+                                            alpha: 1)
     }
     
     private func updateLabels() {
