@@ -14,13 +14,9 @@ final class ViewController: UIViewController {
     
     @IBOutlet var colorizeButton: UIButton!
     
-    @IBOutlet var redValueLabel: UILabel!
-    @IBOutlet var greenValueLabel: UILabel!
-    @IBOutlet var blueValueLabel: UILabel!
+    @IBOutlet var labels: [UILabel]!
     
-    @IBOutlet var redSlider: UISlider!
-    @IBOutlet var greenSlider: UISlider!
-    @IBOutlet var blueSlider: UISlider!
+    @IBOutlet var sliders: [UISlider]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,49 +25,38 @@ final class ViewController: UIViewController {
         colorizeButton.layer.cornerRadius = 10
         
         randomizeSliders()
-        changeColorView()
         updateLabels()
+        updateColorView()
     }
     
     // MARK: - IBActions
     @IBAction func colorizeButtonTapped() {
         randomizeSliders()
-        changeColorView()
         updateLabels()
+        updateColorView()
     }
     
-    @IBAction func redSliderAction() {
-        changeColorView()
-        updateLabels()
-    }
     
-    @IBAction func greenSliderAction() {
-        changeColorView()
+    @IBAction func sliderAction() {
         updateLabels()
-    }
-    
-    @IBAction func blueSliderAction() {
-        changeColorView()
-        updateLabels()
+        updateColorView()
     }
     
     // MARK: - Private methods
     private func randomizeSliders() {
-        redSlider.value = .random(in: 0...1)
-        greenSlider.value = .random(in: 0...1)
-        blueSlider.value = .random(in: 0...1)
-    }
-    
-    private func changeColorView() {
-        colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
-                                            green: CGFloat(greenSlider.value),
-                                            blue: CGFloat(blueSlider.value),
-                                            alpha: 1)
+        sliders.forEach { $0.value = .random(in: 0...1) }
     }
     
     private func updateLabels() {
-        redValueLabel.text = String(format: "%.2f", redSlider.value)
-        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
-        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+        for (index, label) in labels.enumerated() {
+            label.text = String(format: "%.2f", sliders[index].value)
+        }
+    }
+    
+    private func updateColorView() {
+        colorView.backgroundColor = UIColor(red: CGFloat(sliders[0].value),
+                                            green: CGFloat(sliders[1].value),
+                                            blue: CGFloat(sliders[2].value),
+                                            alpha: 1)
     }
 }
