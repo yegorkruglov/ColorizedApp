@@ -36,9 +36,10 @@ final class ViewController: UIViewController {
         updateColorView()
     }
     
-    
-    @IBAction func sliderAction() {
-        updateLabels()
+    @IBAction func sliderAction(_ sender: UISlider) {
+        guard let index = sliders.firstIndex(of: sender) else { return }
+        labels[index].text = String(format: "%.2f", sender.value)
+        
         updateColorView()
     }
     

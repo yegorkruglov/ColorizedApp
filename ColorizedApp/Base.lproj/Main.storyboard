@@ -95,21 +95,21 @@
                                                         <rect key="frame" x="-2" y="0.0" width="244.66666666666666" height="75.666666666666671"/>
                                                         <color key="minimumTrackTintColor" systemColor="systemRedColor"/>
                                                         <connections>
-                                                            <action selector="sliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="fda-W8-CDk"/>
+                                                            <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="X2g-wK-X4F"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3cz-yW-8rq" userLabel="greenSlider">
                                                         <rect key="frame" x="-2" y="82.666666666666629" width="244.66666666666666" height="75.333333333333314"/>
                                                         <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
                                                         <connections>
-                                                            <action selector="sliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="IEO-pZ-YDL"/>
+                                                            <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="RUG-jw-evV"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="K8l-tT-0Gw" userLabel="blueSlider">
                                                         <rect key="frame" x="-2" y="165" width="244.66666666666666" height="75.666666666666686"/>
                                                         <color key="minimumTrackTintColor" systemColor="systemBlueColor"/>
                                                         <connections>
-                                                            <action selector="sliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="qRP-4h-Vd5"/>
+                                                            <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="1jU-WO-KPC"/>
                                                         </connections>
                                                     </slider>
                                                 </subviews>
