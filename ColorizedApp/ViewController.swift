@@ -38,7 +38,7 @@ final class ViewController: UIViewController {
     
     @IBAction func sliderAction(_ sender: UISlider) {
         guard let index = sliders.firstIndex(of: sender) else { return }
-        labels[index].text = String(format: "%.2f", sender.value)
+        labels[index].text = string(from: sender)
         
         updateColorView()
     }
@@ -50,7 +50,7 @@ final class ViewController: UIViewController {
     
     private func updateLabels() {
         for (index, label) in labels.enumerated() {
-            label.text = String(format: "%.2f", sliders[index].value)
+            label.text = string(from: sliders[index])
         }
     }
     
@@ -59,5 +59,9 @@ final class ViewController: UIViewController {
                                             green: CGFloat(sliders[1].value),
                                             blue: CGFloat(sliders[2].value),
                                             alpha: 1)
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
 }
