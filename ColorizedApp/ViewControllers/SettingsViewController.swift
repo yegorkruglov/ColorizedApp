@@ -7,32 +7,33 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class SettingsViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet var colorView: UIView!
-    
-    @IBOutlet var colorizeButton: UIButton!
+    @IBOutlet var getRandomColorButton: UIButton!
+    @IBOutlet var saveButton: UIButton!
     
     @IBOutlet var labels: [UILabel]!
-    
     @IBOutlet var sliders: [UISlider]!
     
+    var colorOfSuperView: UIColor!
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         colorView.layer.cornerRadius = 10
-        colorizeButton.layer.cornerRadius = 10
+        getRandomColorButton.layer.cornerRadius = 10
+        saveButton.layer.cornerRadius = 10
         
-        randomizeSliders()
-        updateLabels()
-        updateColorView()
+        updateSlidersToColorOfSuperView()
+        updateLabelsToSlidersValues()
     }
     
     // MARK: - IBActions
-    @IBAction func colorizeButtonTapped() {
+    @IBAction func getRandomColor() {
         randomizeSliders()
-        updateLabels()
+        updateLabelsToSlidersValues()
         updateColorView()
     }
     
@@ -43,12 +44,16 @@ final class ViewController: UIViewController {
         updateColorView()
     }
     
+    @IBAction func saveButtonTapped() {
+    }
+    
+    
     // MARK: - Private methods
     private func randomizeSliders() {
         sliders.forEach { $0.value = .random(in: 0...1) }
     }
     
-    private func updateLabels() {
+    private func updateLabelsToSlidersValues() {
         for (index, label) in labels.enumerated() {
             label.text = string(from: sliders[index])
         }
@@ -63,5 +68,22 @@ final class ViewController: UIViewController {
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
+    }
+
+    private func updateSlidersToColorOfSuperView() {
+        var redComponent: CGFloat = 0
+        var greenComponent: CGFloat = 0
+        var blueComponent: CGFloat = 0
+
+        colorOfSuperView.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha: nil)
+        
+        colorView.backgroundColor = UIColor(red: redComponent,
+                                            green: greenComponent,
+                                            blue: blueComponent,
+                                            alpha: 1)
+        
+        for (slider, component) in zip(sliders, [redComponent, greenComponent, blueComponent]) {
+            slider.value = Float(component)
+        }
     }
 }
